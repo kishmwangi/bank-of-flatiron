@@ -1,6 +1,6 @@
 // App.js
 import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid'; // Import uuidv4 from uuid package
+import { v4 as uuidv4 } from 'uuid'; 
 import TransactionList from './components/TransactionList/TransactionList';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredTransactions, setFilteredTransactions] = useState([]);
-
+//fetching data
   useEffect(() => {
     fetch('http://localhost:3500/transaction')
       .then(response => {
@@ -21,24 +21,24 @@ function App() {
       .then(data => setTransactions(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
-
+//handlesubmit
   const handleSubmit = (formData) => {
     const newTransaction = {
-      id: uuidv4(), // Generate a unique ID using uuidv4
+      id: uuidv4(), 
       description: formData.description,
       amount: parseFloat(formData.amount),
       date: formData.date.toISOString().split('T')[0]
     };
     setTransactions([...transactions, newTransaction]);
   };
-
+//handle search
   const handleSearch = () => {
     const filtered = transactions.filter(transaction =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTransactions(filtered);
   };
-
+//handle keypress
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSearch();
