@@ -1,4 +1,4 @@
-// TransactionForm.js
+
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -38,7 +38,7 @@ function TransactionForm({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <input
         type="text"
         placeholder="Description"
@@ -60,8 +60,9 @@ function TransactionForm({ onSubmit }) {
         onChange={handleDateChange}
         dateFormat="MM/dd/yyyy"
         placeholderText="Select Date"
+        className="date-picker"
       />
-      <button type="submit">Add Transaction</button>
+      <button type="submit" className="submit-button">Add Transaction</button>
     </form>
   );
 }

@@ -1,4 +1,8 @@
-.transaction-table {
+.transaction-list-container {
+    margin-top: 20px;
+  }
+  
+  .transaction-table {
     width: 100%;
     border-collapse: collapse;
   }
