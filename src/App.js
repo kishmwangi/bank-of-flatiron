@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
-import TransactionList  from './TransactionList';
+import TransactionList from './TransactionList';
 import TransactionForm from './TransactionForm';
-
-
 
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const  handleSubmit = (FormData) => {
+  const handleSubmit = (formData) => {
     const newTransaction = {
-      description: FormData.description,
-      amount: parseFloat(FormData.amount)
+      description: formData.description,
+      amount: parseFloat(formData.amount)
     };
     setTransactions([...transactions, newTransaction]);
   };
-  const filterdTransactions = transactions.filter(transactions => transactions.description.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-);
 
+  const filteredTransactions = transactions.filter(transaction =>
+    transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-return (
-  <div>
-    <h1>Transaction Tracker</h1>
-    <input 
-        type='Text'
-        placeholder='Search transactions...'
-        onChange={ (e) => setSearchTerm(e.target.value)}
-    />
-    <TransactionList transactions={filterdTransactions} />
-    <TransactionForm onSubmit={handleSubmit} />
-  </div>
-  
-);
-  
-
+  return (
+    <div>
+      <h1>Transaction Tracker</h1>
+      <input
+        type="text"
+        placeholder="Search transactions..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <TransactionList transactions={filteredTransactions} />
+      <TransactionForm onSubmit={handleSubmit} />
+    </div>
+  );
 }
+
 export default App;
