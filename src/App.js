@@ -14,5 +14,7 @@ function App() {
       amount: parseFloat(formData.amount)
     };
     setTransactions([...transactions, newTransaction]);
-  }
+  };
+  const filterdTransactions = transactions.filter(transactions => transactions.description.toLowerCase().includes(searchTerm.toLocaleLowerCase))
+  ;
 };
