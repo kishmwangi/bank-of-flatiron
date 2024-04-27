@@ -1,5 +1,4 @@
-import React, { useState } form 'react';
-
+import React, { useState } from 'react';
 
 function TransactionForm({ onSubmit }) {
     const [FormData, setFormData] = useState({
@@ -11,7 +10,7 @@ function TransactionForm({ onSubmit }) {
     const handleInputChange = (e) => 
     setFormData({
         ...FormData,
-        [e.target.name]; e.target.value
+        [e.target.name]: e.target.value
     });
 
 
