@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import TransactionList from './TransactionList';
 import TransactionForm from './TransactionForm';
@@ -7,12 +8,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
 
-  useEffect(() => {
-    fetch('http://localhost:3001/transactions')
-      .then(response => response.json())
-      .then(data => setTransactions(data.transactions))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+
   const handleSubmit = (formData) => {
     const newTransaction = {
       description: formData.description,
