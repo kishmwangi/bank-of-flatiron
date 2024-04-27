@@ -10,7 +10,7 @@ function App() {
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/transactions')
+    fetch('http://localhost:3001/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

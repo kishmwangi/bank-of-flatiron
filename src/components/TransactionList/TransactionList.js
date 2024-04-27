@@ -1,21 +1,38 @@
 // TransactionList.js
-import React from 'react';
+import React, { useState } from 'react';
 import './TransactionList.css';
 
 function TransactionList({ transactions }) {
+  const [sortBy, setSortBy] = useState('description');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const sortedTransactions = [...transactions].sort((a, b) => {
+    const comparison = a[sortBy].localeCompare(b[sortBy]);
+    return sortOrder === 'asc' ? comparison : -comparison;
+  });
+
+  const handleSortChange = (criteria) => {
+    if (sortBy === criteria) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(criteria);
+      setSortOrder('asc');
+    }
+  };
+
   return (
     <div className="transaction-list-container">
       <h2>Transaction List</h2>
       <table className="transaction-table">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Amount</th>
+            <th onClick={() => handleSortChange('date')}>Date</th>
+            <th onClick={() => handleSortChange('description')}>Description</th>
+            <th onClick={() => handleSortChange('amount')}>Amount</th>
           </tr>
         </thead>
         <tbody>
-          {transactions.map(transaction => (
+          {sortedTransactions.map(transaction => (
             <tr key={transaction.id}>
               <td>{transaction.date}</td>
               <td>{transaction.description}</td>
