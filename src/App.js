@@ -1,11 +1,18 @@
 
-import React, { useState,  } from 'react';
+import React, { useState, useEffect } from 'react';
 import TransactionList from './components/TransactionList/TransactionList';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    fetch('./db.json')
+       .then(response => response.json())
+       .then(data => setTransactions(data))
+       .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
 
   
@@ -23,7 +30,7 @@ function App() {
 
   return (
     <div>
-      <h1 id='Header'>Flatiron Bank</h1>
+      <h1>Flatiron Bank</h1>
       <input
         type="text"
         placeholder="Search transactions..."

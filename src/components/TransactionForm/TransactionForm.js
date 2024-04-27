@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import './TransactionForm.css'
 
 
 
@@ -9,7 +10,7 @@ function TransactionForm({ onSubmit }) {
   const [formData, setFormData] = useState({
     description: '',
     amount: '',
-    date: new Date() // Default to current date
+    date: new Date() 
   });
 
   const handleInputChange = (e) => {

@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import './TransactionList.css'
 
 function TransactionList({ transactions }) {
   return (
