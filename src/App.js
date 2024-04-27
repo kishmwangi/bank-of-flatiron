@@ -1,14 +1,14 @@
 
-import React, { useState, useEffect } from 'react';
-import TransactionList from './TransactionList';
-import TransactionForm from './TransactionForm';
+import React, { useState,  } from 'react';
+import TransactionList from './components/TransactionList/TransactionList';
+import TransactionForm from './components/TransactionForm/TransactionForm';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
 
-
+  
   const handleSubmit = (formData) => {
     const newTransaction = {
       description: formData.description,
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <h1>Transaction Tracker</h1>
+      <h1 id='Header'>Flatiron Bank</h1>
       <input
         type="text"
         placeholder="Search transactions..."
