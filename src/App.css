@@ -1,3 +1,8 @@
+.Header {
+  text-align: center;
+  color: white;
+  background-color: #45a049;
+}
 /* TransactionList.css */
 .transaction-list-container {
   margin-top: 20px;
