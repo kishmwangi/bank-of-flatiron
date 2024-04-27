@@ -4,13 +4,14 @@ import TransactionList from './components/TransactionList/TransactionList';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 import './App.css';
 
+
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/')
+    fetch('http://localhost:3500/transaction')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
