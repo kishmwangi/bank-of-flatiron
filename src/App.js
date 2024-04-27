@@ -11,10 +11,28 @@ function App() {
   const  handleSubmit = (FormData) => {
     const newTransaction = {
       description: FormData.description,
-      amount: parseFloat(formData.amount)
+      amount: parseFloat(FormData.amount)
     };
     setTransactions([...transactions, newTransaction]);
   };
-  const filterdTransactions = transactions.filter(transactions => transactions.description.toLowerCase().includes(searchTerm.toLocaleLowerCase))
-  ;
-};
+  const filterdTransactions = transactions.filter(transactions => transactions.description.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+);
+
+
+return (
+  <div>
+    <h1>Transaction Tracker</h1>
+    <input 
+        type='Text'
+        placeholder='Search transactions...'
+        onChange={ (e) => setSearchTerm(e.target.value)}
+    />
+    <TransactionList transactions={filterdTransactions} />
+    <TransactionForm onSubmit={handleSubmit} />
+  </div>
+  
+);
+  
+
+}
+export default App;
