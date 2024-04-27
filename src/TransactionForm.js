@@ -23,7 +23,19 @@ function TransactionForm({ onSubmit }) {
             amount: ''
         });
 
-        
+        return (
+            <form onSubmit={handleSubmit}>
+               <input 
+                    type="text"
+                    placeholder="description"
+                    name="description"
+                    value={FormData.amount}
+                    onChange={handleInputChange}
+                    required
+                />
+                <button type="submit">Add Transaction</button>
+            </form>
+        );
     }
 }
 
