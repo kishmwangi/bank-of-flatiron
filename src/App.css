@@ -2,6 +2,7 @@
   text-align: center;
   color: white;
   background-color: #45a049;
+  text-decoration: none;
 }
 /* TransactionList.css */
 .transaction-list-container {
@@ -11,6 +12,7 @@
 .transaction-table {
   width: 100%;
   border-collapse: collapse;
+
 }
 
 .transaction-table th, .transaction-table td {
