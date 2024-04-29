@@ -1,44 +1,32 @@
-// App.js
-import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid'; 
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TransactionList from './components/TransactionList/TransactionList';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 import './App.css';
+import TransactionData from './components/data/TransactionData.js'; 
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState(TransactionData);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredTransactions, setFilteredTransactions] = useState([]);
-//fetching data
-  useEffect(() => {
-    fetch('http://localhost:3000/transaction')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => setTransactions(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-//handlesubmit
+
   const handleSubmit = (formData) => {
     const newTransaction = {
-      id: uuidv4(), 
+      id: uuidv4(),
+      date: formData.date.toISOString().split('T')[0],
       description: formData.description,
-      amount: parseFloat(formData.amount),
-      date: formData.date.toISOString().split('T')[0]
+      amount: parseFloat(formData.amount)
     };
     setTransactions([...transactions, newTransaction]);
   };
-//handle search
+
   const handleSearch = () => {
     const filtered = transactions.filter(transaction =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTransactions(filtered);
   };
-//handle keypress
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSearch();
