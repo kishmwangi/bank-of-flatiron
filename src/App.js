@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import TransactionList from './components/TransactionList/TransactionList';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 import './App.css';
-import TransactionData from './components/data/TransactionData.js'; 
+import TransactionData from './components/data/TransactionData'; // Import the array
+
+function generateUniqueId() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
 
 function App() {
   const [transactions, setTransactions] = useState(TransactionData);
@@ -12,7 +15,7 @@ function App() {
 
   const handleSubmit = (formData) => {
     const newTransaction = {
-      id: uuidv4(),
+      id: generateUniqueId(),
       date: formData.date.toISOString().split('T')[0],
       description: formData.description,
       amount: parseFloat(formData.amount)
