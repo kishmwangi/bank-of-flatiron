@@ -41,6 +41,12 @@ const transactionsData = [
       date: "2024-04-07",
       description: "Mortgage",
       amount: 8000
+    },
+    {
+      id: 8,
+      date: "2025-05-08",
+      description: "Party",
+      amount: 5000
     }
   ];
   
